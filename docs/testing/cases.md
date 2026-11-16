@@ -92,6 +92,16 @@ Source of `docs/testing/test-catalog.{csv,json}` (run `npm run catalog`). Levels
 | P5-K02 [S] | **So sánh với test tay** (baseline P0-K01) | Tỉ lệ theo từng bước; nêu khoảng cách nếu chưa đạt |
 | P5-K03 [S] | Lặp 5 lần | Token mỗi lần ổn định, không tăng |
 | P5-K04 [S] | Lỗi tiêm có chủ đích | Chi phí tìm nguyên nhân ≤ ngưỡng |
+| P5-T11 [U] | Cheat: lập kế hoạch kiểm tra preset, môi trường và file token, không ghi backend | Preset lạ, môi trường không cho phép, thiếu token đều bị từ chối; kế hoạch không chứa token |
+| P5-T12 [U] | Cheat: chưa có phê duyệt thì không gửi gì | Từ chối `WRITE_GUARD`; 0 request tới server |
+| P5-T13 [U] | Cheat: một lần gửi đã duyệt là đúng một POST đúng hình dạng, không credentials | Đúng đường dẫn, content-type, các trường; không Authorization, Cookie, Origin |
+| P5-T14 [U] | Cheat: phê duyệt chỉ dùng một lần | Lần hai bị từ chối, không thêm request |
+| P5-T15 [U] | Cheat: Clear Session là kế hoạch và POST riêng | Đúng đường dẫn và query; kế hoạch cảnh báo mất session |
+| P5-T16 [U] | Cheat: token không lộ ở bất cứ đâu dù server echo lại | Không có trong phản hồi, ledger, kế hoạch, phê duyệt |
+| P5-T17 [U] | Cheat: kết quả không rõ là `indeterminate`, không retry, không theo redirect; lỗi server là `error` | Một lần thử; redirect không được theo |
+| P5-T18 [U] | Cheat: quy tắc profile và URL | Chỉ https hoặc loopback, không credentials, segment an toàn, mặc định chỉ staging |
+| P5-K05 [U] | Cheat: phản hồi `plan` trong ngân sách | ≤ 320 token với request id UUID, đích dạng thật |
+| P5-K06 [U] | Cheat: một lần cheat là 2 lần gọi, phản hồi `apply` nhỏ | ≤ 140 token |
 
 ### Phase 6 — Mở rộng ra nhiều game
 | Mã | Test case | Kỳ vọng |

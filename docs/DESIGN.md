@@ -20,7 +20,7 @@ dashboard (separate process) ──┘        ├─ engine + capability registr
 
 ## Capabilities
 
-Query: `doctor`, `freshness`, `evidence.events|ui|server`, `evidence.listeners`, `evidence.diff`, `evidence.check`, `frames.analyze`. Job: `observe`, `screenshot`, `frames`. Reserved and `unavailable`: `run`, `runall`, `cheat`, `tokens`. Every capability declares a reply budget; a descriptor missing a required field is refused when registered.
+Query: `doctor`, `freshness`, `evidence.events|ui|server`, `evidence.listeners`, `evidence.diff`, `evidence.check`, `frames.analyze`. Job: `observe`, `screenshot`, `frames`. Write path: `cheat.plan` (propose) and `cheat` (apply, one POST from an approved plan). Reserved and `unavailable`: `run`, `runall`, `tokens`. Every capability declares a reply budget; a descriptor missing a required field is refused when registered.
 
 ## Evidence
 
@@ -57,7 +57,7 @@ Replies are measured with a worst-case estimate of 1.5 characters per token. A p
 | 2 | Headless browser, recorder, evidence reads | implemented (fake page) |
 | 3 | Screenshots, frames, sampler, flash detection | implemented (fake page, synthetic images) |
 | 4 | Assertions, listeners, diff, base suite | implemented (synthetic evidence) |
-| 5 | Staging scenarios, cheat adapter | not implemented |
+| 5 | Staging scenarios, cheat adapter | cheat adapter implemented (fake server only); scenarios not implemented |
 | 6 | Many games from profiles | not implemented |
 | 7 | Stabilisation | not implemented |
 | 8 | Service and dashboard | implemented |

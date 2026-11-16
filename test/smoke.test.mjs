@@ -6,12 +6,12 @@ import { testConfig } from './helpers.mjs';
 
 const engine = () => createEngine(testConfig());
 
-test('registry lists the 16 gameplay capabilities; only the implemented ones are available', () => {
+test('registry lists the 17 gameplay capabilities; only the implemented ones are available', () => {
     const list = listCapabilities(engine().registry);
-    assert.equal(list.length, 16);
+    assert.equal(list.length, 17);
     assert.ok(list.every(c => c.name.startsWith('gameplay.')));
     assert.deepEqual(list.filter(c => c.availability === 'available').map(c => c.name).sort(),
-        ['gameplay.doctor', 'gameplay.evidence.check', 'gameplay.evidence.diff', 'gameplay.evidence.events', 'gameplay.evidence.listeners', 'gameplay.evidence.server',
+        ['gameplay.cheat', 'gameplay.cheat.plan', 'gameplay.doctor', 'gameplay.evidence.check', 'gameplay.evidence.diff', 'gameplay.evidence.events', 'gameplay.evidence.listeners', 'gameplay.evidence.server',
             'gameplay.evidence.ui', 'gameplay.frames', 'gameplay.frames.analyze', 'gameplay.freshness', 'gameplay.observe', 'gameplay.screenshot']);
 });
 

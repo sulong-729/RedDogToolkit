@@ -26,12 +26,13 @@ Use the toolkit when a question needs the **running game**: what it sent, what i
 | What does it look like | `gameplay.screenshot` (use `scale` 0.25 or `clip`; one full image is about 1200 tokens) |
 | Did something flash for a frame | `gameplay.frames` then `gameplay.frames.analyze` |
 | What differs between two runs | `gameplay.evidence.diff {a, b}` |
+| Force a server state first (free game, big win) | `gameplay.cheat.plan` → the user approves the hash → `gameplay.cheat` (a backend WRITE; only if the game's profile has a `cheat` block) |
 
 Rules that save tokens: read replies, not files; page evidence with `limit`; re-read with `ifRevision`; ask for an image only when the question is visual; never poll with screenshots.
 
 ## Resume / reload flow
 
-A resume test needs a server session already open (for example mid-Free). **The toolkit cannot create that state yet** (no cheat adapter, no staging scenarios, and it never writes to a backend without an approved plan). Ask the user to set it up, then:
+A resume test needs a server session already open (for example mid-Free). If the profile has a `cheat` block, arm it with `gameplay.cheat.plan {game, preset}`, show the user the plan (preset, environment, destination) and **wait for them to approve the hash**, then `gameplay.cheat {planHash}`. It only arms the next result: **a spin is still needed and the toolkit cannot spin yet**, so ask the user to spin. Never tick Clear Session for a resume test (`action:"clear-session"` is a separate plan that destroys the session). Without a `cheat` block, ask the user to set the state up. Then:
 
 1. `observe` with `withToken`, `watch` set to the labels that matter (balance, win, spins left, multiplier), `reloadAfterSeconds` after the game has loaded into that state, and `seconds` long enough to finish resuming. The recorder keeps one continuous record across the reload.
 2. `evidence.listeners {runId}`: each resume event should appear once per reload (`emits=1`). Event names come from the game or its profile; do not guess them.
@@ -39,7 +40,7 @@ A resume test needs a server session already open (for example mid-Free). **The 
 4. `evidence.ui {runId}`: compare watched values before and after the reload. Values restored after a resume are recorded as changes.
 5. Report the run id and the seq of each finding.
 
-What this cannot do today, and what to say instead of pretending: assert an exact order of two events (only counts via `listeners`), take a screenshot inside the same reloaded session (each capability opens its own browser), start a Free/Bonus session.
+What this cannot do today, and what to say instead of pretending: assert an exact order of two events (only counts via `listeners`), take a screenshot inside the same reloaded session (each capability opens its own browser), spin or click in the game. A cheat reply of `indeterminate` means the outcome is unknown: report it, do not replay it.
 
 ## Reading results honestly
 

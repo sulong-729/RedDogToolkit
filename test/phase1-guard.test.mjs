@@ -87,3 +87,12 @@ test('P1-T07 a second run for the same user is refused with BUSY; a dead holder 
     fs.writeFileSync(file, '99999999');
     lock.acquire('user_c')();
 });
+
+test('a plan with an undefined field hashes the same before and after it is stored, so a valid approval is not refused', async () => {
+    const { approvals, call } = engineWithWrite();
+    const withUndefined = { operation: 'gameplay.testwrite', params: { game: 'demo', preset: undefined }, mutations: ['x'] };
+    const { hash } = approvals.propose(withUndefined);
+    assert.equal(hash, approvals.propose({ operation: 'gameplay.testwrite', params: { game: 'demo' }, mutations: ['x'] }).hash, 'undefined and absent are the same plan');
+    approvals.approve(hash);
+    assert.equal((await call({ planHash: hash })).status, 'ok');
+});

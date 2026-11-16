@@ -21,6 +21,9 @@ import { DEFAULT_TRIGGER, summarize, traceFrom } from '../modules/assertions/ind
 import { runBaseSuite } from '../modules/assertions/suite.js';
 import type { Probes } from '../modules/doctor/probes.js';
 import type { EvidenceFile } from '../modules/store/index.js';
+import { CheatTargetSchema, planCheat, sendCheat } from '../modules/cheat/index.js';
+import { Approvals, consumedPlan } from '../modules/guard/index.js';
+import { KitError } from '../contracts/index.js';
 
 const empty = z.object({}).strict();
 const runParams = z.object({ game: z.string().min(1), scenario: z.string().min(1) }).strict();
@@ -54,7 +57,7 @@ function available(c: Capability, handler: NonNullable<Capability['handler']>): 
     return { ...c, availability: 'available', handler };
 }
 
-export function gameplayCapabilities(cfg: Config, probes?: Probes): Capability[] {
+export function gameplayCapabilities(cfg: Config, probes?: Probes, approvals: Approvals = new Approvals(cfg.stateDir)): Capability[] {
     const evidence = (name: string, file: EvidenceFile, verification: string) =>
         available(cap(name, 'query', true, null, verification, evidenceParams), (p) => readEvidence(cfg.stateDir, file, p));
 
@@ -89,7 +92,19 @@ export function gameplayCapabilities(cfg: Config, probes?: Probes): Capability[]
         available(cap('gameplay.frames', 'job', true, 160, 'P3-T04, P3-T05, P3-K01', burstParams), (p) => burst(cfg, p)),
         available(cap('gameplay.screenshot', 'job', true, 170, 'P3-T01, P3-K01, P3-K03', shootParams), (p) => shoot(cfg, p)),
         available(cap('gameplay.frames.analyze', 'query', true, 200, 'P3-T06, P3-T07', analyzeParams), (p) => analyzeRun(cfg.stateDir, p)),
-        cap('gameplay.cheat', 'apply', false, 100, 'P1-T03, P1-T04, P5-T09', z.object({ planHash: z.string() }).strict()),
+        // Propose: validates and stores a plan. Reads the profile and the token file, writes nothing to any backend.
+        available(cap('gameplay.cheat.plan', 'propose', true, 320, 'P5-T11, P5-T12, P5-K05', CheatTargetSchema), (p) => planCheat(cfg, approvals, p)),
+        // Apply: one POST, only from a plan a human approved. The user id is read from the token file, never passed in.
+        {
+            ...cap('gameplay.cheat', 'apply', false, 140, 'P5-T13..T18, P5-K06', z.object({ planHash: z.string() }).strict()),
+            availability: 'available',
+            handler: async (_p, request) => {
+                const plan = consumedPlan(request);
+                if (!plan) throw new KitError('WRITE_GUARD', 'no approved plan for this call', 'propose, then a person approves');
+                return sendCheat(cfg, plan.params);
+            },
+            resultStatus: (data) => (data?.outcome === 'unknown' ? 'indeterminate' : 'ok'),
+        },
         cap('gameplay.tokens', 'query', true, 300, 'P0-K05, P7-K02'),
     ];
 }

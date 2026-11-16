@@ -22,7 +22,7 @@ export interface Engine {
 
 export function createEngine(cfg: Config, probes?: Probes, approvals = new Approvals(cfg.stateDir)): Engine {
     const registry = new Registry(makeAuthorize(approvals));
-    for (const capability of gameplayCapabilities(cfg, probes)) registry.register(validateCapability(capability));
+    for (const capability of gameplayCapabilities(cfg, probes, approvals)) registry.register(validateCapability(capability));
     const budgets = new Map(registry.describe().map(c => [c.name, c.resultBudgetTokens as number | null]));
     const ledger: LedgerEntry[] = [];
 

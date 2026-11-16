@@ -1,6 +1,6 @@
 {
   "source": "docs/testing/cases.md",
-  "total": 104,
+  "total": 114,
   "cases": [
     {
       "id": "P0-T01",
@@ -9,8 +9,8 @@
       "level": "I/R",
       "title": "S1–S8 ở mục 8 (P0-T01)",
       "expected": "Mỗi spike có ghi chú quyết định bằng chữ",
-      "status": "NOT_RUN",
-      "evidence": null
+      "status": "PASS_SCOPED",
+      "evidence": "docs/spikes/S1-first-real-game-run.md: scene detection, node access, sampler and log patterns confirmed on one real game; no login, so no gameplay data"
     },
     {
       "id": "P0-T02",
@@ -19,8 +19,8 @@
       "level": "I/R",
       "title": "S1–S8 ở mục 8 (P0-T02)",
       "expected": "Mỗi spike có ghi chú quyết định bằng chữ",
-      "status": "NOT_RUN",
-      "evidence": null
+      "status": "PASS_SCOPED",
+      "evidence": "Feasibility answered by read-only inspection of a team cheat tool and two read-only network probes (details kept privately: internal hosts). Reachable from a local process without a browser; the tool's UI needs a login but its API calls carry no credentials. NOT verified: that the API accepts a POST from a non-browser client (needs one real, approved write), the response format"
     },
     {
       "id": "P0-T03",
@@ -731,6 +731,106 @@
       "expected": "Chi phí tìm nguyên nhân ≤ ngưỡng",
       "status": "NOT_RUN",
       "evidence": null
+    },
+    {
+      "id": "P5-T11",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "U",
+      "title": "Cheat: lập kế hoạch kiểm tra preset, môi trường và file token, không ghi backend",
+      "expected": "Preset lạ, môi trường không cho phép, thiếu token đều bị từ chối; kế hoạch không chứa token",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase5-cheat.test.mjs; runs against a FAKE cheat server on loopback; no real host, no real token, no real game; the real API has not been called"
+    },
+    {
+      "id": "P5-T12",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "U",
+      "title": "Cheat: chưa có phê duyệt thì không gửi gì",
+      "expected": "Từ chối `WRITE_GUARD`; 0 request tới server",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase5-cheat.test.mjs; runs against a FAKE cheat server on loopback; no real host, no real token, no real game; the real API has not been called"
+    },
+    {
+      "id": "P5-T13",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "U",
+      "title": "Cheat: một lần gửi đã duyệt là đúng một POST đúng hình dạng, không credentials",
+      "expected": "Đúng đường dẫn, content-type, các trường; không Authorization, Cookie, Origin",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase5-cheat.test.mjs; runs against a FAKE cheat server on loopback; no real host, no real token, no real game; the real API has not been called. The request shape was taken from reading a team tool, not from a real exchange"
+    },
+    {
+      "id": "P5-T14",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "U",
+      "title": "Cheat: phê duyệt chỉ dùng một lần",
+      "expected": "Lần hai bị từ chối, không thêm request",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase5-cheat.test.mjs; runs against a FAKE cheat server on loopback; no real host, no real token, no real game; the real API has not been called"
+    },
+    {
+      "id": "P5-T15",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "U",
+      "title": "Cheat: Clear Session là kế hoạch và POST riêng",
+      "expected": "Đúng đường dẫn và query; kế hoạch cảnh báo mất session",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase5-cheat.test.mjs; runs against a FAKE cheat server on loopback; no real host, no real token, no real game; the real API has not been called. Also found and fixed a guard bug: a plan with an undefined field hashed differently after storage"
+    },
+    {
+      "id": "P5-T16",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "U",
+      "title": "Cheat: token không lộ ở bất cứ đâu dù server echo lại",
+      "expected": "Không có trong phản hồi, ledger, kế hoạch, phê duyệt",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase5-cheat.test.mjs; runs against a FAKE cheat server on loopback; no real host, no real token, no real game; the real API has not been called (fake token)"
+    },
+    {
+      "id": "P5-T17",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "U",
+      "title": "Cheat: kết quả không rõ là `indeterminate`, không retry, không theo redirect; lỗi server là `error`",
+      "expected": "Một lần thử; redirect không được theo",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase5-cheat.test.mjs; runs against a FAKE cheat server on loopback; no real host, no real token, no real game; the real API has not been called"
+    },
+    {
+      "id": "P5-T18",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "U",
+      "title": "Cheat: quy tắc profile và URL",
+      "expected": "Chỉ https hoặc loopback, không credentials, segment an toàn, mặc định chỉ staging",
+      "status": "PASS",
+      "evidence": "test/phase5-cheat.test.mjs; pure URL and profile validation"
+    },
+    {
+      "id": "P5-K05",
+      "phase": "Phase 5",
+      "kind": "token",
+      "level": "U",
+      "title": "Cheat: phản hồi `plan` trong ngân sách",
+      "expected": "≤ 320 token với request id UUID, đích dạng thật",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase5-cheat.test.mjs; plan reply within its 320-token budget with a UUID request id; a realistic destination measured 274 tokens est, which EXCEEDED the first 260 budget and cut the hash out of the reply (fixed by raising the budget); estimator uncalibrated (P0-K02)"
+    },
+    {
+      "id": "P5-K06",
+      "phase": "Phase 5",
+      "kind": "token",
+      "level": "U",
+      "title": "Cheat: một lần cheat là 2 lần gọi, phản hồi `apply` nhỏ",
+      "expected": "≤ 140 token",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase5-cheat.test.mjs; plan + apply = 2 calls; plan 268 and apply 126 tokens est (budgets 320 and 140); estimator uncalibrated (P0-K02); no manual-cheat baseline measured"
     },
     {
       "id": "P6-T01",

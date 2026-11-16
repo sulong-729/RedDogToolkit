@@ -18,7 +18,8 @@ export interface Plan {
 function stable(value: unknown): string {
     if (Array.isArray(value)) return '[' + value.map(stable).join(',') + ']';
     if (value && typeof value === 'object')
-        return '{' + Object.keys(value as object).sort().map(k => JSON.stringify(k) + ':' + stable((value as Record<string, unknown>)[k])).join(',') + '}';
+        // A key whose value is undefined is not stored in JSON, so it must not count toward the hash either.
+        return '{' + Object.keys(value as object).filter(k => (value as Record<string, unknown>)[k] !== undefined).sort().map(k => JSON.stringify(k) + ':' + stable((value as Record<string, unknown>)[k])).join(',') + '}';
     return JSON.stringify(value);
 }
 
@@ -72,11 +73,18 @@ export class Approvals {
     }
 }
 
+const consumedPlans = new WeakMap<object, Plan>();
+
+/** The approved plan that authorised this request. Only makeAuthorize sets it, so a handler can trust it. */
+export function consumedPlan(request: RequestEnvelope): Plan | undefined {
+    return consumedPlans.get(request);
+}
+
 /** Authorization callback for the Registry: reads pass; writes need a consumed, approved plan hash in params.planHash. */
 export function makeAuthorize(approvals: Approvals) {
     return (cap: Capability, request: RequestEnvelope): boolean => {
         if (cap.readOnly) return true;
-        approvals.consume(request.params.planHash, cap.name);
+        consumedPlans.set(request, approvals.consume(request.params.planHash, cap.name));
         return true;
     };
 }

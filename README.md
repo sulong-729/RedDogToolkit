@@ -62,6 +62,16 @@ A write to a backend needs a plan (`reddog propose <op> --params … --mutations
 
 `config.json` (see `reddog.config.example.json`): `stateDir`, `profilesDir`, `controllerPort`, `chromePath`, `chromeArgs`, `tokenFile`, `previewBase`, optional `cocosProject` and `stagingProbeUrl`, and `recordSameOriginGets` (default false: a dev preview server delivers thousands of asset files by `fetch`, which are not evidence). Checks that need an optional value report `skip`, never `pass`. The token is read only from `tokenFile` and is never printed. Per-game knowledge lives in a **profile** (`profiles/<id>.json`, see `profiles/example.json`): log patterns, server field names, watchlist. Anything you have not verified stays `null`, and the matching check is skipped.
 
+## Cheat adapter (force a server state)
+
+Slot tests often need a server-side state first (a free-game trigger, a big win). `gameplay.cheat.plan` and `gameplay.cheat` drive a team's HTTP cheat endpoint without a browser. **Every call is a write to a backend**, so it always runs as plan, human approval, apply:
+
+1. `gameplay.cheat.plan {game, preset, environment?}` (MCP tool `gameplay_propose`): checks the preset, the allowed environment and that the token file is readable, stores a plan, returns its hash. Nothing is sent.
+2. A person approves that exact hash (`reddog approve <hash>` or the dashboard's *Duyệt* button).
+3. `gameplay.cheat {planHash}` (MCP tool `gameplay_apply`): performs **one** POST. No retry, no redirect following. If the outcome is unknown (timeout, reset) the reply is `indeterminate` and it must not be replayed blindly.
+
+Clear Session (`action: "clear-session"`) is a separate plan, because it destroys an open Free/Bonus session. The test user id is read from the token file by the toolkit process; it is never an argument, never in a plan or a reply, and is masked everywhere. Where to call and the preset data come from a `cheat` block in the game's profile (`baseUrl` with `{env}`, `serviceId`, `sendPath`, `presets`); keep real values in a **private** profile, not in this repository. Tested only against a fake cheat server on loopback; see `docs/testing/results.json`.
+
 ## Skill for AI agents
 
 `skills/reddog-runtime-test/SKILL.md` tells an agent when to use the toolkit, in what order, how to run a resume/reload test, and what it cannot do yet. Install it for Claude Code with `mkdir -p ~/.claude/skills && cp -R skills/reddog-runtime-test ~/.claude/skills/`. The installer does not do this for you.
@@ -79,8 +89,8 @@ Layout: `src/contracts` (envelope, error codes, capability registry, six-tool fa
 
 ## Status and limits
 
-- 99 tests pass. They run on a **fake game page**, on synthetic evidence, and on a real Chrome. One real game has been opened once, **without a login**, so no gameplay or wallet data exists yet: see `docs/spikes/S1-first-real-game-run.md` for what that run proved and what it did not.
-- Not implemented: the staging scenarios (`run`, `runall`), the cheat adapter, and the `tokens` capability. Those capabilities report `unavailable`.
+- 112 tests pass. They run on a **fake game page**, on synthetic evidence, and on a real Chrome. One real game has been opened once, **without a login**, so no gameplay or wallet data exists yet: see `docs/spikes/S1-first-real-game-run.md` for what that run proved and what it did not.
+- Not implemented: the staging scenarios (`run`, `runall`) and the `tokens` capability; they report `unavailable`. The cheat adapter exists but has only been exercised against a fake server.
 - Most test results are recorded as `PASS_SCOPED` with the scope written next to them (`docs/testing/results.json`). Token figures use an uncalibrated estimator.
 - The MCP tool list itself costs roughly 1400 tokens (worst-case estimate) in every agent turn; reducing it is open work.
 - Installer: tested in throwaway home folders from the real zip. Not tested: another physical Mac, Intel hardware, Gatekeeper's real prompt.

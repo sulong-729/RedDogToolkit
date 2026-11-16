@@ -254,5 +254,53 @@
   "P8-K03": {
     "status": "PASS_SCOPED",
     "evidence": "test/phase8-service.test.mjs; the same 6 tools and identical schema through the daemon and in-process. The tool list costs about 1417 tokens (est, 1.5 chars/token) in the agent context every turn: a token cost this phase did not reduce"
+  },
+  "P0-T01": {
+    "status": "PASS_SCOPED",
+    "evidence": "docs/spikes/S1-first-real-game-run.md: scene detection, node access, sampler and log patterns confirmed on one real game; no login, so no gameplay data"
+  },
+  "P0-T02": {
+    "status": "PASS_SCOPED",
+    "evidence": "Feasibility answered by read-only inspection of a team cheat tool and two read-only network probes (details kept privately: internal hosts). Reachable from a local process without a browser; the tool's UI needs a login but its API calls carry no credentials. NOT verified: that the API accepts a POST from a non-browser client (needs one real, approved write), the response format"
+  },
+  "P5-T11": {
+    "status": "PASS_SCOPED",
+    "evidence": "test/phase5-cheat.test.mjs; runs against a FAKE cheat server on loopback; no real host, no real token, no real game; the real API has not been called"
+  },
+  "P5-T12": {
+    "status": "PASS_SCOPED",
+    "evidence": "test/phase5-cheat.test.mjs; runs against a FAKE cheat server on loopback; no real host, no real token, no real game; the real API has not been called"
+  },
+  "P5-T13": {
+    "status": "PASS_SCOPED",
+    "evidence": "test/phase5-cheat.test.mjs; runs against a FAKE cheat server on loopback; no real host, no real token, no real game; the real API has not been called. The request shape was taken from reading a team tool, not from a real exchange"
+  },
+  "P5-T14": {
+    "status": "PASS_SCOPED",
+    "evidence": "test/phase5-cheat.test.mjs; runs against a FAKE cheat server on loopback; no real host, no real token, no real game; the real API has not been called"
+  },
+  "P5-T15": {
+    "status": "PASS_SCOPED",
+    "evidence": "test/phase5-cheat.test.mjs; runs against a FAKE cheat server on loopback; no real host, no real token, no real game; the real API has not been called. Also found and fixed a guard bug: a plan with an undefined field hashed differently after storage"
+  },
+  "P5-T16": {
+    "status": "PASS_SCOPED",
+    "evidence": "test/phase5-cheat.test.mjs; runs against a FAKE cheat server on loopback; no real host, no real token, no real game; the real API has not been called (fake token)"
+  },
+  "P5-T17": {
+    "status": "PASS_SCOPED",
+    "evidence": "test/phase5-cheat.test.mjs; runs against a FAKE cheat server on loopback; no real host, no real token, no real game; the real API has not been called"
+  },
+  "P5-T18": {
+    "status": "PASS",
+    "evidence": "test/phase5-cheat.test.mjs; pure URL and profile validation"
+  },
+  "P5-K05": {
+    "status": "PASS_SCOPED",
+    "evidence": "test/phase5-cheat.test.mjs; plan reply within its 320-token budget with a UUID request id; a realistic destination measured 274 tokens est, which EXCEEDED the first 260 budget and cut the hash out of the reply (fixed by raising the budget); estimator uncalibrated (P0-K02)"
+  },
+  "P5-K06": {
+    "status": "PASS_SCOPED",
+    "evidence": "test/phase5-cheat.test.mjs; plan + apply = 2 calls; plan 268 and apply 126 tokens est (budgets 320 and 140); estimator uncalibrated (P0-K02); no manual-cheat baseline measured"
   }
 }
