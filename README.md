@@ -62,6 +62,10 @@ A write to a backend needs a plan (`reddog propose <op> --params … --mutations
 
 `config.json` (see `reddog.config.example.json`): `stateDir`, `profilesDir`, `controllerPort`, `chromePath`, `chromeArgs`, `tokenFile`, `previewBase`, optional `cocosProject` and `stagingProbeUrl`, and `recordSameOriginGets` (default false: a dev preview server delivers thousands of asset files by `fetch`, which are not evidence). Checks that need an optional value report `skip`, never `pass`. The token is read only from `tokenFile` and is never printed. Per-game knowledge lives in a **profile** (`profiles/<id>.json`, see `profiles/example.json`): log patterns, server field names, watchlist. Anything you have not verified stays `null`, and the matching check is skipped.
 
+## Skill for AI agents
+
+`skills/reddog-runtime-test/SKILL.md` tells an agent when to use the toolkit, in what order, how to run a resume/reload test, and what it cannot do yet. Install it for Claude Code with `mkdir -p ~/.claude/skills && cp -R skills/reddog-runtime-test ~/.claude/skills/`. The installer does not do this for you.
+
 ## Develop
 
 ```bash
