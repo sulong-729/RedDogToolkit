@@ -1,0 +1,22 @@
+{
+  "id": "example",
+  "gameDir": "path/to/your/game",
+  "presets": [],
+  "watchlist": [],
+  "wallet": {
+    "balance": null,
+    "bet": null,
+    "win": null
+  },
+  "nonNegative": [],
+  "knownDuplicateRegistrations": [],
+  "viewports": [
+    {
+      "width": 720,
+      "height": 1280
+    }
+  ],
+  "unverified": [
+    "Copy this file to <your-game-id>.json and fill in only what you have verified. Anything left null makes the matching check report 'skip'."
+  ]
+}

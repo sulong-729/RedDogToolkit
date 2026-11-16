@@ -1,0 +1,11 @@
+{
+  "previewBase": "http://localhost:7456/",
+  "tokenFile": "~/.reddog/token.txt",
+  "stagingProbeUrl": null,
+  "cocosProject": null,
+  "chromePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "controllerPort": 7481,
+  "profilesDir": "./profiles",
+  "stateDir": "./state",
+  "charsPerToken": 1.5
+}

@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Game profile",
+  "type": "object",
+  "required": [
+    "id",
+    "gameDir"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,40}$"
+    },
+    "gameDir": {
+      "type": "string",
+      "description": "path relative to the repository root"
+    },
+    "cheatProject": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "environment": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "staging",
+        null
+      ]
+    },
+    "testUser": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "reference name only; never a token"
+    },
+    "presets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "mutates"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "mutates": {
+            "type": "boolean"
+          },
+          "expects": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "watchlist": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "pathContains"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "pathContains": {
+            "type": "string"
+          },
+          "spine": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "serverKeys": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "knownDuplicateRegistrations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "module",
+          "count"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "module": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 2
+          }
+        }
+      }
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "startButton": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "viewports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "width",
+          "height"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "width": {
+            "type": "integer"
+          },
+          "height": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

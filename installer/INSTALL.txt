@@ -1,0 +1,42 @@
+RedDogToolkit — cài đặt trên macOS / Installing on macOS
+=========================================================
+
+Yêu cầu / Requirements
+  - macOS, Intel hoặc Apple Silicon (bộ cài chỉ gồm JavaScript, không có file nhị phân riêng cho từng chip)
+  - Node.js 22.16 trở lên  (https://nodejs.org  hoặc:  brew install node)
+  - Google Chrome (chỉ cần cho observe / screenshot / frames; doctor sẽ báo nếu thiếu)
+  - KHÔNG cần sudo, KHÔNG cần quyền quản trị.
+
+Cách cài (chọn một) / How to install (pick one)
+  A. Mở Terminal, vào thư mục đã giải nén, chạy:
+         bash install.sh
+     Cách này luôn dùng được, kể cả khi file bị macOS chặn hoặc mất quyền thực thi sau khi giải nén.
+
+  B. Bấm đúp "Install RedDogToolkit.command".
+     Nếu macOS báo "không thể mở vì nhà phát triển chưa xác định" (unidentified developer):
+       chuột phải vào file → Open → Open một lần nữa. (Hoặc dùng cách A.)
+
+  Nếu Terminal báo "Operation not permitted" hay file bị cách ly (quarantine), gỡ cờ cách ly rồi cài lại:
+         xattr -dr com.apple.quarantine /đường/dẫn/tới/thư-mục-đã-giải-nén
+         bash install.sh
+
+Vì sao macOS cảnh báo / Why macOS warns
+  Bộ cài này CHƯA được ký bằng Apple Developer ID và CHƯA được Apple notarize (cần tài khoản Apple Developer trả phí).
+  Vì vậy Gatekeeper có thể hỏi một lần khi bấm đúp file tải từ internet. Đó là hành vi bình thường với phần mềm chưa ký,
+  không phải lỗi của bộ cài. Cách A tránh hoàn toàn bước này.
+
+Bộ cài tạo những gì / What it creates (và chỉ những thứ này)
+  ~/Library/Application Support/RedDogToolkit/   chương trình, config.json, state/ (run, ledger, kế hoạch)
+  ~/.local/bin/reddog                             lệnh
+  ~/Applications/RedDogToolkit.app                mở bảng điều khiển
+Bộ cài KHÔNG: dùng sudo, sửa ~/.zshrc, cài login item (LaunchAgent), hay đăng ký MCP vào ứng dụng AI nào.
+Nếu ~/.local/bin chưa nằm trong PATH, bộ cài in sẵn dòng cần thêm; bạn tự thêm.
+
+Dùng thử / First run
+  reddog doctor            kiểm tra môi trường
+  reddog service start     bật service nền
+  open ~/Applications/RedDogToolkit.app     mở bảng điều khiển
+
+Gỡ cài đặt / Uninstall
+  bash uninstall.sh            gỡ chương trình; GIỮ state và config.json
+  bash uninstall.sh --purge    gỡ luôn state và config.json

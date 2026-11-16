@@ -1,0 +1,1046 @@
+{
+  "source": "docs/testing/cases.md",
+  "total": 104,
+  "cases": [
+    {
+      "id": "P0-T01",
+      "phase": "Phase 0",
+      "kind": "function",
+      "level": "I/R",
+      "title": "S1–S8 ở mục 8 (P0-T01)",
+      "expected": "Mỗi spike có ghi chú quyết định bằng chữ",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P0-T02",
+      "phase": "Phase 0",
+      "kind": "function",
+      "level": "I/R",
+      "title": "S1–S8 ở mục 8 (P0-T02)",
+      "expected": "Mỗi spike có ghi chú quyết định bằng chữ",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P0-T03",
+      "phase": "Phase 0",
+      "kind": "function",
+      "level": "I/R",
+      "title": "S1–S8 ở mục 8 (P0-T03)",
+      "expected": "Mỗi spike có ghi chú quyết định bằng chữ",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P0-T04",
+      "phase": "Phase 0",
+      "kind": "function",
+      "level": "I/R",
+      "title": "S1–S8 ở mục 8 (P0-T04)",
+      "expected": "Mỗi spike có ghi chú quyết định bằng chữ",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P0-T05",
+      "phase": "Phase 0",
+      "kind": "function",
+      "level": "I/R",
+      "title": "S1–S8 ở mục 8 (P0-T05)",
+      "expected": "Mỗi spike có ghi chú quyết định bằng chữ",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P0-T06",
+      "phase": "Phase 0",
+      "kind": "function",
+      "level": "I/R",
+      "title": "S1–S8 ở mục 8 (P0-T06)",
+      "expected": "Mỗi spike có ghi chú quyết định bằng chữ",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P0-T07",
+      "phase": "Phase 0",
+      "kind": "function",
+      "level": "I/R",
+      "title": "S1–S8 ở mục 8 (P0-T07)",
+      "expected": "Mỗi spike có ghi chú quyết định bằng chữ",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P0-T08",
+      "phase": "Phase 0",
+      "kind": "function",
+      "level": "I/R",
+      "title": "S1–S8 ở mục 8 (P0-T08)",
+      "expected": "Mỗi spike có ghi chú quyết định bằng chữ",
+      "status": "PASS_SCOPED",
+      "evidence": "docs/spikes/S8-forge-integration.md (Forge source read only; nothing executed; recommends integration by composition)"
+    },
+    {
+      "id": "P0-K01",
+      "phase": "Phase 0",
+      "kind": "token",
+      "level": "U",
+      "title": "Dựng baseline test tay từ transcript của một phiên test thủ công",
+      "expected": "Bảng theo bước: số lần gọi, token đọc, token ảnh",
+      "status": "PASS_SCOPED",
+      "evidence": "docs/spikes/P0-K01-K02-token-baseline.md (whole-session baseline; hand-test share estimated by category, tokens estimated)"
+    },
+    {
+      "id": "P0-K02",
+      "phase": "Phase 0",
+      "kind": "token",
+      "level": "U",
+      "title": "Hiệu chuẩn tokenizer bằng `usage` thật",
+      "expected": "Sai số ghi rõ; hệ số chốt",
+      "status": "NOT_RUN",
+      "evidence": "docs/spikes/P0-K01-K02-token-baseline.md (calibration attempted, inconclusive: ~1.5 chars/token includes hidden context)"
+    },
+    {
+      "id": "P0-K03",
+      "phase": "Phase 0",
+      "kind": "token",
+      "level": "I",
+      "title": "Đo log engine thô 12 giây",
+      "expected": "Số dòng/token; căn cứ mức lọc",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P0-K04",
+      "phase": "Phase 0",
+      "kind": "token",
+      "level": "U",
+      "title": "Đo kích thước mô tả+schema của 6 tool",
+      "expected": "Số cố định; đặt ngưỡng trần",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P0-K05",
+      "phase": "Phase 0",
+      "kind": "token",
+      "level": "U",
+      "title": "Chốt ngưỡng ở mục 9 từ số đo thật",
+      "expected": "Bảng ngưỡng cập nhật",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P1-T01",
+      "phase": "Phase 1",
+      "kind": "function",
+      "level": "U",
+      "title": "Che `?token=`, `Bearer`, bí mật đã đăng ký",
+      "expected": "Không còn giá trị bí mật",
+      "status": "PASS",
+      "evidence": "test/phase1-redact-store-registry.test.mjs (offline unit)"
+    },
+    {
+      "id": "P1-T02",
+      "phase": "Phase 1",
+      "kind": "function",
+      "level": "U",
+      "title": "Lỗi chứa URL token",
+      "expected": "Thông báo đã che",
+      "status": "PASS",
+      "evidence": "test/phase1-redact-store-registry.test.mjs (error through engine.call is redacted)"
+    },
+    {
+      "id": "P1-T03",
+      "phase": "Phase 1",
+      "kind": "function",
+      "level": "U",
+      "title": "Ghi staging mà không qua `propose/apply`",
+      "expected": "Từ chối `WRITE_GUARD`, exit 1, không mở browser",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase1-guard.test.mjs; \"does not open the browser\" not testable yet: no browser module exists. Refusal and no-write are verified."
+    },
+    {
+      "id": "P1-T04",
+      "phase": "Phase 1",
+      "kind": "function",
+      "level": "U",
+      "title": "`apply` với hash sai/hết hạn",
+      "expected": "Từ chối; cờ `approved` của client không có hiệu lực",
+      "status": "PASS",
+      "evidence": "test/phase1-guard.test.mjs (replay, tamper, wrong operation, expiry, client \"approved\" flag)"
+    },
+    {
+      "id": "P1-T05",
+      "phase": "Phase 1",
+      "kind": "function",
+      "level": "U",
+      "title": "Scenario chưa hỗ trợ",
+      "expected": "`unsupported`, exit 2, không giả pass",
+      "status": "PASS",
+      "evidence": "test/phase1-redact-store-registry.test.mjs (spawns built CLI: exit 2 with valid params, exit 1 with invalid)"
+    },
+    {
+      "id": "P1-T06",
+      "phase": "Phase 1",
+      "kind": "function",
+      "level": "I",
+      "title": "`doctor` khi thiếu token / cổng bị chiếm / cache lệch / VPN tắt",
+      "expected": "Mỗi lỗi một dòng kèm cách sửa",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase1-doctor.test.mjs; failures SIMULATED from fixtures (temp dirs, local servers, unreachable port), not real editor/VPN. One real read-only doctor run: only the token check failed"
+    },
+    {
+      "id": "P1-T07",
+      "phase": "Phase 1",
+      "kind": "function",
+      "level": "U",
+      "title": "Hai run cùng user",
+      "expected": "Run thứ hai bị từ chối `BUSY`",
+      "status": "PASS",
+      "evidence": "test/phase1-guard.test.mjs (BUSY, stale lock reclaimed)"
+    },
+    {
+      "id": "P1-T08",
+      "phase": "Phase 1",
+      "kind": "function",
+      "level": "U",
+      "title": "Quét toàn bộ artifact của run mẫu bằng token giả",
+      "expected": "Không có token ở đâu",
+      "status": "PASS",
+      "evidence": "test/phase1-redact-store-registry.test.mjs (scans every artifact file)"
+    },
+    {
+      "id": "P1-T09",
+      "phase": "Phase 1",
+      "kind": "function",
+      "level": "U",
+      "title": "Registry: capability thiếu trường bắt buộc",
+      "expected": "Từ chối nạp, nêu trường",
+      "status": "PASS",
+      "evidence": "test/phase1-redact-store-registry.test.mjs (field named in the error)"
+    },
+    {
+      "id": "P1-K01",
+      "phase": "Phase 1",
+      "kind": "token",
+      "level": "I",
+      "title": "`doctor` đạt",
+      "expected": "≤ 250 token, 1 lần gọi",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase1-doctor.test.mjs; estimator uncalibrated (P0-K02): 1.5 chars/token worst case"
+    },
+    {
+      "id": "P1-K02",
+      "phase": "Phase 1",
+      "kind": "token",
+      "level": "I",
+      "title": "`doctor` khi 3 lỗi cùng lúc",
+      "expected": "1 lần gọi báo đủ; so baseline dò từng lỗi",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase1-doctor.test.mjs; three failures in one call within budget; estimator uncalibrated (P0-K02): 1.5 chars/token worst case; no per-error discovery baseline exists in P0-K01, so the comparison half is NOT done"
+    },
+    {
+      "id": "P1-K03",
+      "phase": "Phase 1",
+      "kind": "token",
+      "level": "U",
+      "title": "Thông báo lỗi",
+      "expected": "≤ 60 token mỗi lỗi, không stack",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase1-redact-store-registry.test.mjs; estimator uncalibrated (P0-K02): 1.5 chars/token worst case"
+    },
+    {
+      "id": "P1-K04",
+      "phase": "Phase 1",
+      "kind": "token",
+      "level": "U",
+      "title": "Phản hồi vượt ngân sách",
+      "expected": "Bị cắt, `truncated=true`, có `resultRef`",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase1-redact-store-registry.test.mjs; estimator uncalibrated (P0-K02): 1.5 chars/token worst case; also found and fixed: an over-budget error was hidden as partial"
+    },
+    {
+      "id": "P2-T01",
+      "phase": "Phase 2",
+      "kind": "function",
+      "level": "I",
+      "title": "Mở preview, chờ scene",
+      "expected": "`scene-ready` theo tín hiệu, không sleep cố định",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase2-browser.test.mjs; runs against a LOCAL FIXTURE PAGE, not the real game; scene awaited by signal, no fixed sleep"
+    },
+    {
+      "id": "P2-T02",
+      "phase": "Phase 2",
+      "kind": "function",
+      "level": "I",
+      "title": "Reload giữa run",
+      "expected": "Dữ liệu trước và sau reload cùng nằm trong evidence; `seq` liên tục",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase2-browser.test.mjs; runs against a LOCAL FIXTURE PAGE, not the real game; one reload, both sides recorded, seq strictly increasing"
+    },
+    {
+      "id": "P2-T03",
+      "phase": "Phase 2",
+      "kind": "function",
+      "level": "I",
+      "title": "Ghi console, lỗi page, request thất bại, websocket",
+      "expected": "Có bản ghi đã che",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase2-browser.test.mjs; runs against a LOCAL FIXTURE PAGE, not the real game; console, pageerror, failed request, http, websocket both ways, token masked"
+    },
+    {
+      "id": "P2-T04",
+      "phase": "Phase 2",
+      "kind": "function",
+      "level": "I",
+      "title": "Lọc nhiễu `server.jsonl`",
+      "expected": "Không có asset tĩnh; số dòng dưới ngưỡng P0-K03",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase2-browser.test.mjs; runs against a LOCAL FIXTURE PAGE, not the real game; assets and ws heartbeats filtered. Real-game noise level (prototype saw 2068 lines/12s) NOT re-measured"
+    },
+    {
+      "id": "P2-T05",
+      "phase": "Phase 2",
+      "kind": "function",
+      "level": "I",
+      "title": "Đóng browser đột ngột",
+      "expected": "Artifact đã ghi còn đọc được; run đánh dấu `indeterminate/aborted`",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase2-browser.test.mjs; runs against a LOCAL FIXTURE PAGE, not the real game; SIGKILL of the browser; evidence readable, result.json status=aborted"
+    },
+    {
+      "id": "P2-T06",
+      "phase": "Phase 2",
+      "kind": "function",
+      "level": "I",
+      "title": "Không cướp focus",
+      "expected": "Không cửa sổ nào được đưa lên trước",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase2-browser.test.mjs; browser launched with --headless and only local http targets are accepted; an absence of window focus was not observed on screen"
+    },
+    {
+      "id": "P2-T07",
+      "phase": "Phase 2",
+      "kind": "function",
+      "level": "I",
+      "title": "Hai lần mở liên tiếp",
+      "expected": "Không rò tiến trình Chrome",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase2-browser.test.mjs; runs against a LOCAL FIXTURE PAGE, not the real game; two open/close cycles, both pids gone"
+    },
+    {
+      "id": "P2-T08",
+      "phase": "Phase 2",
+      "kind": "function",
+      "level": "U",
+      "title": "Cursor/`ifRevision`/hết hạn evidence",
+      "expected": "`unchanged`, `CURSOR_MISMATCH`, `SNAPSHOT_EXPIRED` đúng",
+      "status": "PASS",
+      "evidence": "test/phase2-browser.test.mjs; cursor, ifRevision, CURSOR_MISMATCH, SNAPSHOT_EXPIRED, traversal refused"
+    },
+    {
+      "id": "P2-K01",
+      "phase": "Phase 2",
+      "kind": "token",
+      "level": "I",
+      "title": "Mở preview và chờ scene",
+      "expected": "1 lần gọi, ≤ 120 token; so baseline",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase2-browser.test.mjs; CORRECTED in Phase 3: first measured 106 tokens with a 2-char request id; with a UUID id it is 129 and exceeded the old 120 budget (reply was truncated). Budget raised to 160. One call. Fake page. estimator uncalibrated (P0-K02)"
+    },
+    {
+      "id": "P2-K02",
+      "phase": "Phase 2",
+      "kind": "token",
+      "level": "I",
+      "title": "Reload và ghi tiếp",
+      "expected": "Token độc lập với số bản ghi",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase2-browser.test.mjs; response tokens equal within 6 for 10x more records; estimator uncalibrated (P0-K02); runs against a LOCAL FIXTURE PAGE, not the real game"
+    },
+    {
+      "id": "P2-K03",
+      "phase": "Phase 2",
+      "kind": "token",
+      "level": "I",
+      "title": "Đọc lại cùng evidence không đổi",
+      "expected": "`unchanged`, vài token",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase2-browser.test.mjs; unchanged read = 97 tokens with a UUID id (was 74 with a short id) vs 710 for the first read; threshold set to 110. estimator uncalibrated (P0-K02)"
+    },
+    {
+      "id": "P3-T01",
+      "phase": "Phase 3",
+      "kind": "function",
+      "level": "I",
+      "title": "Screenshot tại checkpoint",
+      "expected": "PNG + meta; phản hồi chỉ đường dẫn",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase3-evidence.test.mjs; runs against a FAKE GAME page (test/fixture.mjs), not the real engine; PNG 720x1280 plus meta.json on disk, reply is path and price"
+    },
+    {
+      "id": "P3-T02",
+      "phase": "Phase 3",
+      "kind": "function",
+      "level": "I",
+      "title": "Sampler/observer với watchlist",
+      "expected": "Chỉ ghi thay đổi",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase3-evidence.test.mjs; runs against a FAKE GAME page (test/fixture.mjs), not the real engine (fake cc.Label tree); watched nodes only, changes only. Real engine node API not exercised (S1 open)"
+    },
+    {
+      "id": "P3-T03",
+      "phase": "Phase 3",
+      "kind": "function",
+      "level": "I",
+      "title": "Đọc Spine `animation@timeScale`",
+      "expected": "Khớp giá trị đọc trực tiếp",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase3-evidence.test.mjs; runs against a FAKE GAME page (test/fixture.mjs), not the real engine (fake sp.Skeleton); sampler value equals a direct page read. Real Spine component not exercised"
+    },
+    {
+      "id": "P3-T04",
+      "phase": "Phase 3",
+      "kind": "function",
+      "level": "I",
+      "title": "Chụp `burst` quanh event",
+      "expected": "Đủ frame, chỉ số khớp dữ liệu UI",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase3-evidence.test.mjs; runs against a FAKE GAME page (test/fixture.mjs), not the real engine; contiguous frame index, files present, the flash found. GAP: frames and UI samples correlate by time (t), not by a shared frame number as the plan asked"
+    },
+    {
+      "id": "P3-T05",
+      "phase": "Phase 3",
+      "kind": "function",
+      "level": "I",
+      "title": "Vượt ngân sách frame",
+      "expected": "`capped=true`, không bỏ im lặng",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase3-evidence.test.mjs; runs against a FAKE GAME page (test/fixture.mjs), not the real engine; capped=true, reason logged"
+    },
+    {
+      "id": "P3-T06",
+      "phase": "Phase 3",
+      "kind": "function",
+      "level": "U",
+      "title": "Diff frame có node chớp (fixture)",
+      "expected": "Đúng frame và vùng",
+      "status": "PASS",
+      "evidence": "test/phase3-frame-analysis.test.mjs (synthetic images: one-frame and two-frame flash, lasting change, region)"
+    },
+    {
+      "id": "P3-T07",
+      "phase": "Phase 3",
+      "kind": "function",
+      "level": "U",
+      "title": "So baseline có vùng bỏ qua",
+      "expected": "Pass/fail đúng",
+      "status": "PASS",
+      "evidence": "test/phase3-frame-analysis.test.mjs (synthetic images: baseline, ignore region, threshold)"
+    },
+    {
+      "id": "P3-T08",
+      "phase": "Phase 3",
+      "kind": "function",
+      "level": "I",
+      "title": "Overhead chụp frame",
+      "expected": "FPS giảm không quá ngưỡng P0",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase3-evidence.test.mjs; measured on the FIXTURE on a machine with a real GPU: 60 fps without capture, 60 with (ratio 1.00). A real game under load is NOT measured; no P0 threshold exists (S5 open)"
+    },
+    {
+      "id": "P3-K01",
+      "phase": "Phase 3",
+      "kind": "token",
+      "level": "I",
+      "title": "Chụp ảnh/frame",
+      "expected": "0 ảnh trong phản hồi; token độc lập số frame",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase3-evidence.test.mjs; with UUID request ids: screenshot 146, frames 120 tokens (budgets 170/160); size independent of frame count; no image in any reply; estimator uncalibrated (P0-K02)"
+    },
+    {
+      "id": "P3-K02",
+      "phase": "Phase 3",
+      "kind": "token",
+      "level": "I",
+      "title": "Chờ trạng thái X bằng điều kiện thay vì ảnh lặp",
+      "expected": "1 lần gọi, 0 ảnh; so baseline dùng ảnh",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase3-evidence.test.mjs; observe with `until`: 138 tokens, 1 call, no screenshot. The polling comparison (~1229 per screenshot) uses the image formula and an assumed poll rate, not a measurement; estimator uncalibrated (P0-K02)"
+    },
+    {
+      "id": "P3-K03",
+      "phase": "Phase 3",
+      "kind": "token",
+      "level": "U",
+      "title": "Chi phí khi chủ động xem một ảnh",
+      "expected": "Đúng công thức ảnh; có thu nhỏ/cắt vùng",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase3-evidence.test.mjs; scale 0.25 -> 77 image tokens vs 1229 (16x cheaper), 300x300 crop -> 120; price from the width*height/750 formula, not from a model"
+    },
+    {
+      "id": "P4-T01",
+      "phase": "Phase 4",
+      "kind": "function",
+      "level": "U",
+      "title": "Đếm listener theo emit từ log mẫu",
+      "expected": "Nhóm đúng; phát hiện context trùng",
+      "status": "PASS",
+      "evidence": "test/phase4-assertions.test.mjs; synthetic evidence with exact timestamps, not a real game run. The Trigger line format is an assumption about a common event-manager log line; it was not checked against a live game log"
+    },
+    {
+      "id": "P4-T02",
+      "phase": "Phase 4",
+      "kind": "function",
+      "level": "U",
+      "title": "Assertion trình tự, `any-order`, `within`, `never`",
+      "expected": "Đúng với chuỗi mẫu",
+      "status": "PASS",
+      "evidence": "test/phase4-assertions.test.mjs; synthetic evidence with exact timestamps, not a real game run (once, order, any, never, within, count inside a window)"
+    },
+    {
+      "id": "P4-T03",
+      "phase": "Phase 4",
+      "kind": "function",
+      "level": "U",
+      "title": "Gọi đôi request trong cửa sổ",
+      "expected": "Báo kèm nơi gọi",
+      "status": "PASS",
+      "evidence": "test/phase4-assertions.test.mjs; synthetic evidence with exact timestamps, not a real game run; reports the call, the gap in ms and the seq of each copy. \"Where\" is the evidence seq, not a source stack"
+    },
+    {
+      "id": "P4-T04",
+      "phase": "Phase 4",
+      "kind": "function",
+      "level": "U",
+      "title": "Command treo, `unhandledrejection`",
+      "expected": "Báo tên và ghi vào evidence",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase4-assertions.test.mjs and test/phase4-suite.test.mjs; unhandled rejection captured from a REAL Chrome page and flagged. Hang detection is tested on synthetic start/end traces only: the real start/end log formats are unknown, so it stays skipped until a profile supplies them"
+    },
+    {
+      "id": "P4-T05",
+      "phase": "Phase 4",
+      "kind": "function",
+      "level": "U",
+      "title": "Tiền thập phân, chênh lệch ví",
+      "expected": "`0.1+0.2` đúng; fail kèm số",
+      "status": "PASS",
+      "evidence": "test/phase4-assertions.test.mjs; exact decimals (0.1+0.2=0.3), wallet chain from the 2nd spin. The server key names are inputs: none is verified for any real game"
+    },
+    {
+      "id": "P4-T06",
+      "phase": "Phase 4",
+      "kind": "function",
+      "level": "U",
+      "title": "Validate schema, bất biến",
+      "expected": "Báo đường dẫn trường; phát hiện mode xung đột",
+      "status": "PASS",
+      "evidence": "test/phase4-assertions.test.mjs; schema paths, non-negative, exclusive modes; mode names and enter/exit events are inputs"
+    },
+    {
+      "id": "P4-T07",
+      "phase": "Phase 4",
+      "kind": "function",
+      "level": "I",
+      "title": "Bộ mức base trên game không có profile",
+      "expected": "Phần cần profile báo `skipped`, không `pass`",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase4-suite.test.mjs; the base suite on runs without a profile: 3 pass, 3 skip, skip never counted as pass. Ran on synthetic runs, not a real game"
+    },
+    {
+      "id": "P4-T08",
+      "phase": "Phase 4",
+      "kind": "function",
+      "level": "U",
+      "title": "`diff` hai evidence",
+      "expected": "Chỉ trả phần khác biệt",
+      "status": "PASS",
+      "evidence": "test/phase4-suite.test.mjs; synthetic evidence with exact timestamps, not a real game run"
+    },
+    {
+      "id": "P4-K01",
+      "phase": "Phase 4",
+      "kind": "token",
+      "level": "U",
+      "title": "Kết quả assertion pass/fail",
+      "expected": "Pass: 1 dòng; fail ≤ 150 token kèm `seq`/frame/đường dẫn",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase4-suite.test.mjs; a failing check line is about 70-110 chars; every failure line <= 150 tokens; estimator uncalibrated (P0-K02)"
+    },
+    {
+      "id": "P4-K02",
+      "phase": "Phase 4",
+      "kind": "token",
+      "level": "U",
+      "title": "`diff` hai run",
+      "expected": "Token ≈ độ lớn khác biệt, không theo kích thước hai run",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase4-suite.test.mjs; a 1-record diff and a 6-record diff both cost far less than one 2000-line run (ratio asserted >= 20x); estimator uncalibrated (P0-K02)"
+    },
+    {
+      "id": "P4-K03",
+      "phase": "Phase 4",
+      "kind": "token",
+      "level": "I",
+      "title": "Bộ mức base một game",
+      "expected": "Trong ngưỡng, 1 lần gọi",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase4-suite.test.mjs; 6 checks on a 300-line run: ONE call, 144 tokens; a run with 3 failures: 260 tokens (budget 350). synthetic evidence with exact timestamps, not a real game run; estimator uncalibrated (P0-K02)"
+    },
+    {
+      "id": "P5-T01",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "S",
+      "title": "`free-flow`",
+      "expected": "Tooltip, label, chênh lệch ví khớp server",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P5-T02",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "S",
+      "title": "`mode-transition`: mỗi lượt của mode phụ",
+      "expected": "Mỗi lượt đúng 1 request lượt; đúng 1 lần chuyển mode",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P5-T03",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "S",
+      "title": "`resume`: reload giữa một mode phụ",
+      "expected": "Đúng 1 bước chuẩn bị resume và 1 lần resume; UI khôi phục",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P5-T04",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "S",
+      "title": "`resume-bonus` khi session còn / đã đóng",
+      "expected": "Kết quả thật / `unstable` exit 2, giữ artifact",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P5-T05",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "S",
+      "title": "`jackpot`",
+      "expected": "Đúng thứ tự cutscene; tổng khớp",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P5-T06",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "I",
+      "title": "`event-duplicates` sau khi vào Free/Bonus",
+      "expected": "Khớp danh sách trùng đã biết",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P5-T07",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "S",
+      "title": "Thanh tiến trình sau resume",
+      "expected": "Xác nhận hoặc bác bỏ việc animation kẹt `timeScale = 0`",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P5-T08",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "S",
+      "title": "Hiệu ứng animation sau khi bỏ Promise thừa khỏi hàm phát animation",
+      "expected": "Đúng thời điểm, không chớp",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P5-T09",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "S",
+      "title": "Ghi staging bị gián đoạn giữa chừng",
+      "expected": "`indeterminate`, không tự replay, `reconcile` hoạt động",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P5-T10",
+      "phase": "Phase 5",
+      "kind": "function",
+      "level": "S",
+      "title": "Lặp mỗi scenario N=5 lần",
+      "expected": "Báo tỉ lệ pass; chỉ scenario đạt ngưỡng mới là gate",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P5-K01",
+      "phase": "Phase 5",
+      "kind": "token",
+      "level": "S",
+      "title": "Token mỗi scenario",
+      "expected": "Trong ngưỡng; có `tokens.json`",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P5-K02",
+      "phase": "Phase 5",
+      "kind": "token",
+      "level": "S",
+      "title": "**So sánh với test tay** (baseline P0-K01)",
+      "expected": "Tỉ lệ theo từng bước; nêu khoảng cách nếu chưa đạt",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P5-K03",
+      "phase": "Phase 5",
+      "kind": "token",
+      "level": "S",
+      "title": "Lặp 5 lần",
+      "expected": "Token mỗi lần ổn định, không tăng",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P5-K04",
+      "phase": "Phase 5",
+      "kind": "token",
+      "level": "S",
+      "title": "Lỗi tiêm có chủ đích",
+      "expected": "Chi phí tìm nguyên nhân ≤ ngưỡng",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P6-T01",
+      "phase": "Phase 6",
+      "kind": "function",
+      "level": "U",
+      "title": "Validate profile",
+      "expected": "Lỗi nêu đúng trường",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P6-T02",
+      "phase": "Phase 6",
+      "kind": "function",
+      "level": "I",
+      "title": "Game thứ hai chỉ bằng profile",
+      "expected": "Bộ mức base chạy, không sửa lõi",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P6-T03",
+      "phase": "Phase 6",
+      "kind": "function",
+      "level": "S",
+      "title": "`run-all` trên các game có profile",
+      "expected": "Bảng game × kiểm tra × trạng thái, chạy tuần tự",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P6-T04",
+      "phase": "Phase 6",
+      "kind": "function",
+      "level": "I",
+      "title": "Lỗi giả lập ở `cc-common`",
+      "expected": "Hiện cùng lỗi trên nhiều game, gộp một mục",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P6-T05",
+      "phase": "Phase 6",
+      "kind": "function",
+      "level": "I",
+      "title": "Game không có profile",
+      "expected": "`skipped` kèm lý do",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P6-K01",
+      "phase": "Phase 6",
+      "kind": "token",
+      "level": "I",
+      "title": "Chi phí thêm game",
+      "expected": "Đo token viết profile; so viết test tay mới",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P6-K02",
+      "phase": "Phase 6",
+      "kind": "token",
+      "level": "S",
+      "title": "`run-all` N game",
+      "expected": "Token gần tuyến tính, hệ số nhỏ; bảng ≤ ngưỡng",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P7-T01",
+      "phase": "Phase 7",
+      "kind": "function",
+      "level": "S",
+      "title": "Chạy mỗi scenario 20 lần",
+      "expected": "Có tỉ lệ flaky; chốt ngưỡng gate",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P7-T02",
+      "phase": "Phase 7",
+      "kind": "function",
+      "level": "U",
+      "title": "Mã thoát 0/1/2, summary dưới 40 dòng",
+      "expected": "Đúng",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P7-T03",
+      "phase": "Phase 7",
+      "kind": "function",
+      "level": "U",
+      "title": "Dọn evidence cũ",
+      "expected": "Giữ N run gần nhất, không xoá run đang chạy",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P7-T04",
+      "phase": "Phase 7",
+      "kind": "function",
+      "level": "I",
+      "title": "Nâng cấp Cocos hoặc `cc-common`",
+      "expected": "Bộ mức base vẫn chạy; thay đổi phá vỡ bị phát hiện",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P7-K01",
+      "phase": "Phase 7",
+      "kind": "token",
+      "level": "S",
+      "title": "**Đo tổng thể trước/sau** trên cùng bộ kịch bản",
+      "expected": "Báo cáo cuối: token, số lần gọi, ảnh, thời gian, tỉ lệ thành công",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P7-K02",
+      "phase": "Phase 7",
+      "kind": "token",
+      "level": "U",
+      "title": "Hồi quy token khi thêm tool/đổi định dạng",
+      "expected": "Fail nếu vượt ngưỡng",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P7-K03",
+      "phase": "Phase 7",
+      "kind": "token",
+      "level": "U",
+      "title": "Run vượt ngân sách",
+      "expected": "`budgetExceeded` kèm capability gây ra",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P7-K04",
+      "phase": "Phase 7",
+      "kind": "token",
+      "level": "I",
+      "title": "Có skill vs không skill",
+      "expected": "Giữ skill chỉ khi giảm gọi hoặc token",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P7-K05",
+      "phase": "Phase 7",
+      "kind": "token",
+      "level": "U",
+      "title": "Tổng mô tả skill",
+      "expected": "Dưới ngân sách; một test thường nạp ≤ 2 skill",
+      "status": "NOT_RUN",
+      "evidence": null
+    },
+    {
+      "id": "P8-T01",
+      "phase": "Phase 8",
+      "kind": "function",
+      "level": "U",
+      "title": "Daemon khởi động, ghi `endpoint.json` (quyền 0600), từ chối khi không có token",
+      "expected": "403 với Host/Origin/token sai",
+      "status": "PASS",
+      "evidence": "test/phase8-service.test.mjs; real HTTP: no token, wrong token, browser Origin, foreign Host, oversized body, endpoint file mode 0600, file removed on close"
+    },
+    {
+      "id": "P8-T02",
+      "phase": "Phase 8",
+      "kind": "function",
+      "level": "U",
+      "title": "CLI và MCP gọi qua daemon",
+      "expected": "Cùng kết quả với engine trực tiếp (so sánh trên bộ lệnh mẫu)",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase8-service.test.mjs; daemon, in-process engine and a real MCP stdio client return the same envelope for gameplay.evidence.check and describe on a synthetic run; the MCP call is proven to be served by the daemon via its log. Only those operations were compared"
+    },
+    {
+      "id": "P8-T03",
+      "phase": "Phase 8",
+      "kind": "function",
+      "level": "U",
+      "title": "Hai khởi động daemon liên tiếp",
+      "expected": "Lần hai không tranh cổng, báo đang chạy",
+      "status": "PASS",
+      "evidence": "test/phase8-service.test.mjs; real daemon processes: a second start reports alreadyRunning and does not start another"
+    },
+    {
+      "id": "P8-T04",
+      "phase": "Phase 8",
+      "kind": "function",
+      "level": "I",
+      "title": "Start/stop/status theo kiểu sở hữu",
+      "expected": "Chỉ dừng đúng tiến trình đã khởi động; không kill PID lạ",
+      "status": "PASS",
+      "evidence": "test/phase8-service.test.mjs; real processes: start, status, stop, pid gone, endpoint removed; a stranger process named by a stale endpoint file is NOT touched"
+    },
+    {
+      "id": "P8-T05",
+      "phase": "Phase 8",
+      "kind": "function",
+      "level": "I",
+      "title": "Controller phục vụ bảng điều khiển khi daemon tắt",
+      "expected": "Trang mở được, trạng thái \"đã tắt\", nút Bật hoạt động",
+      "status": "PASS",
+      "evidence": "test/phase8-service.test.mjs; controller serves the page with the daemon stopped; its start/stop buttons start and stop a real daemon"
+    },
+    {
+      "id": "P8-T06",
+      "phase": "Phase 8",
+      "kind": "function",
+      "level": "I",
+      "title": "Thẻ Môi trường khớp `gameplay.doctor`",
+      "expected": "Cùng số dòng và cùng cách sửa",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase8-service.test.mjs; the card and gameplay.doctor show the same failure lines, compared with fake probes (failures only), not on a healthy real environment"
+    },
+    {
+      "id": "P8-T07",
+      "phase": "Phase 8",
+      "kind": "function",
+      "level": "I",
+      "title": "Thẻ Run gần đây và Token khớp artifact và `ledger.jsonl`",
+      "expected": "Số liệu trùng với file",
+      "status": "PASS",
+      "evidence": "test/phase8-service.test.mjs; runs card and token card equal the files on disk"
+    },
+    {
+      "id": "P8-T08",
+      "phase": "Phase 8",
+      "kind": "function",
+      "level": "I",
+      "title": "Nút Duyệt tạo đúng một phê duyệt cho đúng hash",
+      "expected": "Phê duyệt dùng một lần, hết hạn, gắn với kế hoạch",
+      "status": "PASS",
+      "evidence": "test/phase8-service.test.mjs; the button approves exactly the shown plan, once; the plan leaves the list"
+    },
+    {
+      "id": "P8-T09",
+      "phase": "Phase 8",
+      "kind": "function",
+      "level": "I",
+      "title": "Gọi API duyệt thiếu mã duyệt / sai Origin / sai Host",
+      "expected": "Từ chối, không tạo phê duyệt",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase8-service.test.mjs; refused without the key, with a foreign Origin or Host. LIMIT: another process of the same OS user can still call the API (same limit as the CLI approve); not mitigated"
+    },
+    {
+      "id": "P8-T10",
+      "phase": "Phase 8",
+      "kind": "function",
+      "level": "U",
+      "title": "`service plan`",
+      "expected": "In nội dung sẽ cài, không ghi gì vào hệ thống",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase8-service.test.mjs; macOS LaunchAgent plan only: printed, nothing written under HOME, nothing installed. No Windows plan exists"
+    },
+    {
+      "id": "P8-T11",
+      "phase": "Phase 8",
+      "kind": "function",
+      "level": "I",
+      "title": "Token không xuất hiện trong HTML, JSON, log của bảng điều khiển",
+      "expected": "Quét toàn bộ, không còn token",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase8-service.test.mjs; scanned pages, API replies and logs for a FAKE token; the probe line was masked. A real token flow was not exercised"
+    },
+    {
+      "id": "P8-T12",
+      "phase": "Phase 8",
+      "kind": "function",
+      "level": "I",
+      "title": "Ảnh chụp bảng điều khiển bằng chính `gameplay.screenshot`",
+      "expected": "Có đủ 6 thẻ, nhãn tiếng Việt, không tràn ở 720 px",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase8-service.test.mjs; real Chrome at 720 px: 6 cards, no horizontal scroll, Vietnamese labels, log text not parsed as HTML. Screenshot: docs/evidence/dashboard-720.png. Other widths and other browsers not tested"
+    },
+    {
+      "id": "P8-K01",
+      "phase": "Phase 8",
+      "kind": "token",
+      "level": "I",
+      "title": "Gọi qua daemon so với dựng engine mỗi lần",
+      "expected": "Độ trễ và token của cuộc gọi lặp lại giảm; ghi số đo",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase8-service.test.mjs; 3.1 ms per call via the daemon vs 164.7 ms per cold CLI process; the reply is identical so tokens are unchanged. A long-lived MCP stdio process already avoids the cold start, so the gain over that is smaller and was not measured"
+    },
+    {
+      "id": "P8-K02",
+      "phase": "Phase 8",
+      "kind": "token",
+      "level": "I",
+      "title": "Bảng điều khiển đang mở và polling",
+      "expected": "0 token của agent; tải CPU của daemon dưới ngưỡng",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase8-service.test.mjs; 0 ledger entries added and 0.05 CPU-seconds used by the daemon in 11 s with the dashboard open (polling every 5 s). One page, one machine"
+    },
+    {
+      "id": "P8-K03",
+      "phase": "Phase 8",
+      "kind": "token",
+      "level": "U",
+      "title": "Thêm client MCP mỏng",
+      "expected": "Số tool và kích thước schema không đổi so với hiện tại (6 tool)",
+      "status": "PASS_SCOPED",
+      "evidence": "test/phase8-service.test.mjs; the same 6 tools and identical schema through the daemon and in-process. The tool list costs about 1417 tokens (est, 1.5 chars/token) in the agent context every turn: a token cost this phase did not reduce"
+    }
+  ]
+}

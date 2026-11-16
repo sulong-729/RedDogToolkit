@@ -1,0 +1,8 @@
+node_modules/
+dist/
+artifacts/
+state/
+*.token
+*.config.local.json
+output/
+.DS_Store
