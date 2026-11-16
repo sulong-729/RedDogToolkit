@@ -9,11 +9,14 @@ export const NOISY_URL = /\.(png|jpe?g|webp|gif|svg|ico|mp3|ogg|wav|m4a|mp4|woff
 /** socket.io / engine.io heartbeat packets ("2" ping, "3" pong): constant, carry no information. */
 export const HEARTBEAT = /^(2|3)(probe)?$/;
 
+const sameOrigin = (a: string, b: string) => { try { return new URL(a).origin === new URL(b).origin; } catch { return false; } };
 const clip = (text: string, n: number) => (text.length > n ? text.slice(0, n) + `…[+${text.length - n}]` : text);
 
 export interface CaptureStats { heartbeatsFiltered: number; assetsFiltered: number }
 
-export function attachCapture(page: Page, cdp: CDPSession, store: RunStore): CaptureStats {
+export interface CaptureOptions { sameOriginGets?: boolean }
+
+export function attachCapture(page: Page, cdp: CDPSession, store: RunStore, options: CaptureOptions = {}): CaptureStats {
     const stats: CaptureStats = { heartbeatsFiltered: 0, assetsFiltered: 0 };
 
     page.on('console', (msg) => store.append('events.jsonl', { type: 'console', level: msg.type(), text: clip(msg.text(), 2000) }));
@@ -29,6 +32,8 @@ export function attachCapture(page: Page, cdp: CDPSession, store: RunStore): Cap
         const req = res.request();
         if (!['fetch', 'xhr'].includes(req.resourceType())) return;
         if (NOISY_URL.test(res.url())) { stats.assetsFiltered++; return; }
+        // A GET to the page's own origin is the dev server delivering assets or config, not the game talking to a backend.
+        if (!options.sameOriginGets && req.method() === 'GET' && sameOrigin(res.url(), page.url())) { stats.assetsFiltered++; return; }
         let body = '';
         try { body = clip(await res.text(), 4000); } catch { /* body unavailable (redirect, aborted) */ }
         store.append('server.jsonl', { kind: 'http', method: req.method(), url: clip(res.url(), 300), status: res.status(), req: clip(req.postData() ?? '', 2000), res: body });

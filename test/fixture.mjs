@@ -45,7 +45,7 @@ export function startFixture() {
     const hits = { page: 0 };
     const server = http.createServer((req, res) => {
         const url = new URL(req.url, 'http://x');
-        if (url.pathname === '/api/x') { res.writeHead(200, { 'Content-Type': 'application/json' }); res.end('{"ok":true}'); }
+        if (url.pathname === '/api/x') { res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }); res.end('{"ok":true}'); }
         else if (url.pathname === '/pixel.png') { res.writeHead(200, { 'Content-Type': 'image/png' }); res.end(PNG); }
         else if (url.pathname === '/game') { res.writeHead(200, { 'Content-Type': 'text/html' }); res.end(gamePage(url.searchParams.get('anim') === '1' ? 'true' : 'false')); }
         else if (url.pathname === '/reject') { res.writeHead(200, { 'Content-Type': 'text/html' }); res.end('<!doctype html><title>reject</title><script>setTimeout(() => { Promise.reject(new Error("rej boom")); }, 100); setTimeout(() => { window.cc = { director: { getScene: () => ({ name: "s" }) } }; }, 150);</script>'); }

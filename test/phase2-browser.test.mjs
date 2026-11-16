@@ -13,7 +13,7 @@ import { startFixture, chromePath, hasChrome } from './fixture.mjs';
 
 registerSecret('SECRETTOKEN_ABC');
 const opts = { skip: hasChrome ? false : 'Chrome not installed' };
-const cfg = () => testConfig({ chromePath });
+const cfg = () => testConfig({ chromePath, recordSameOriginGets: true });
 const lines = (store, file) => fs.readFileSync(path.join(store.dir, file), 'utf8').split('\n').filter(Boolean).map(l => l.startsWith('{') ? JSON.parse(l) : l);
 const alive = (pid) => { try { process.kill(pid, 0); return true; } catch { return false; } };
 const waitFor = async (fn, ms = 5000) => { const end = Date.now() + ms; while (Date.now() < end) { if (fn()) return true; await new Promise(r => setTimeout(r, 50)); } return false; };
@@ -169,4 +169,20 @@ test('P2-K03 reading evidence again with the same revision answers `unchanged`, 
     const [, firstTokens, againTokens] = engine.ledger.map(e => e.responseTokens);
     assert.ok(againTokens <= 110, String(againTokens)); // measured 97 with a UUID request id: the fixed envelope dominates
     assert.ok(againTokens < firstTokens / 3, `${againTokens} vs ${firstTokens}`);
+});
+
+test('P2-T04 by default a GET to the page\'s own origin is not evidence: the dev server\'s asset traffic is filtered, a cross-origin call is kept', opts, async () => {
+    const fx = await startFixture(); const other = await startFixture();
+    const c = testConfig({ chromePath });          // recordSameOriginGets defaults to false
+    const store = new RunStore(c.stateDir, 'sameorigin');
+    const s = await BrowserSession.open(c, store, fx.url);
+    try {
+        await s.waitForScene(10000);
+        await s.evaluate(`fetch('${other.url}api/x').then(r => r.text())`);   // another origin: a real backend call
+        await waitFor(() => lines(store, 'server.jsonl').some(r => r.kind === 'http'));
+    } finally { await s.close(); fx.close(); other.close(); }
+    const http = lines(store, 'server.jsonl').filter(r => r.kind === 'http');
+    assert.equal(http.length, 1, JSON.stringify(http.map(r => r.url)));
+    assert.ok(http[0].url.startsWith(other.url), 'only the cross-origin call was recorded');
+    assert.ok(s.stats.assetsFiltered >= 1, 'the same-origin GET was counted as filtered, not silently dropped');
 });

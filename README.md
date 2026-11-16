@@ -60,7 +60,7 @@ A write to a backend needs a plan (`reddog propose <op> --params … --mutations
 
 ### Configuration
 
-`config.json` (see `reddog.config.example.json`): `stateDir`, `profilesDir`, `controllerPort`, `chromePath`, `chromeArgs`, `tokenFile`, `previewBase`, optional `cocosProject` and `stagingProbeUrl`. Checks that need an optional value report `skip`, never `pass`. The token is read only from `tokenFile` and is never printed. Per-game knowledge lives in a **profile** (`profiles/<id>.json`, see `profiles/example.json`): log patterns, server field names, watchlist. Anything you have not verified stays `null`, and the matching check is skipped.
+`config.json` (see `reddog.config.example.json`): `stateDir`, `profilesDir`, `controllerPort`, `chromePath`, `chromeArgs`, `tokenFile`, `previewBase`, optional `cocosProject` and `stagingProbeUrl`, and `recordSameOriginGets` (default false: a dev preview server delivers thousands of asset files by `fetch`, which are not evidence). Checks that need an optional value report `skip`, never `pass`. The token is read only from `tokenFile` and is never printed. Per-game knowledge lives in a **profile** (`profiles/<id>.json`, see `profiles/example.json`): log patterns, server field names, watchlist. Anything you have not verified stays `null`, and the matching check is skipped.
 
 ## Develop
 
@@ -75,7 +75,7 @@ Layout: `src/contracts` (envelope, error codes, capability registry, six-tool fa
 
 ## Status and limits
 
-- 98 tests pass. They run on a **fake game page**, on synthetic evidence, and on a real Chrome. **No real game has been run through it.** Verified against the real engine: nothing yet.
+- 99 tests pass. They run on a **fake game page**, on synthetic evidence, and on a real Chrome. One real game has been opened once, **without a login**, so no gameplay or wallet data exists yet: see `docs/spikes/S1-first-real-game-run.md` for what that run proved and what it did not.
 - Not implemented: the staging scenarios (`run`, `runall`), the cheat adapter, and the `tokens` capability. Those capabilities report `unavailable`.
 - Most test results are recorded as `PASS_SCOPED` with the scope written next to them (`docs/testing/results.json`). Token figures use an uncalibrated estimator.
 - The MCP tool list itself costs roughly 1400 tokens (worst-case estimate) in every agent turn; reducing it is open work.

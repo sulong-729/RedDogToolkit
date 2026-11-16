@@ -76,7 +76,7 @@ export class BrowserSession {
         await this.page.evaluateOnNewDocument((cfg) => { (window as unknown as { __reddog_cfg: unknown }).__reddog_cfg = cfg; }, { watch: options.watch ?? [], every: options.every ?? 6 });
         await this.page.evaluateOnNewDocument(RECORDER_SCRIPT);
         this.page.on('framenavigated', (f) => { if (f === this.page.mainFrame()) this.sceneReady = false; });
-        this.stats = attachCapture(this.page, this.cdp, this.store);
+        this.stats = attachCapture(this.page, this.cdp, this.store, { sameOriginGets: this.cfg.recordSameOriginGets });
         this.store.flow('browser opened');
     }
 

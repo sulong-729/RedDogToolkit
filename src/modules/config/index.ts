@@ -17,6 +17,8 @@ const ConfigSchema = z.object({
     stagingProbeUrl: z.string().nullable().default(null),
     /** Optional path of the Cocos project to inspect read-only. When null compile-cache and freshness checks are skipped. */
     cocosProject: z.string().nullable().default(null),
+    /** Record GETs to the page's own origin. Default false: a dev preview server serves thousands of asset/config files that way (1997 of 1998 records in a real 15 s run) and they are not evidence. */
+    recordSameOriginGets: z.boolean().default(false),
     chromePath: z.string().default('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'),
     /** Extra Chrome flags. Default none: forcing software GL cut rAF from 60 to ~17 fps on a machine with a real GPU (S4 note). Add --enable-unsafe-swiftshader on machines without one. */
     chromeArgs: z.array(z.string()).default([]),

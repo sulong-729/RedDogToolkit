@@ -17,6 +17,7 @@ export function testConfig(overrides = {}) {
         cocosProject: null,
         chromePath: process.execPath,
         chromeArgs: [],
+        recordSameOriginGets: false,
         controllerPort: 0,
         profilesDir: path.join(dir, 'profiles'),
         stateDir: path.join(dir, 'state'),
