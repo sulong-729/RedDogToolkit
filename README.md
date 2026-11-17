@@ -8,7 +8,7 @@ It runs as a small background service. It opens your game in a headless Chrome, 
 - An **MCP server** with six tools (`gameplay_describe`, `_query`, `_propose`, `_apply`, `_job`, `_artifact`) and a **CLI**.
 - Evidence you can diff and page through, assertions for data and logic, per-frame capture, and a strict write guard.
 
-Version 1.0.0 is a first release. Read **Status and limits** before relying on it.
+Version 1.0.x is a first release. Read **Status and limits** before relying on it.
 
 ## What it can do
 

@@ -1,6 +1,6 @@
 {
   "name": "reddog-toolkit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "description": "Local runtime-test toolkit for Cocos Creator slot games: a service, an MCP server and a dashboard that record evidence and check it, built to spend few tokens.",

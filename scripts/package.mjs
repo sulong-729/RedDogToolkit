@@ -33,6 +33,7 @@ for (const f of ['install.sh', 'uninstall.sh', 'Install RedDogToolkit.command', 
     fs.chmodSync(path.join(bundle, f), f.endsWith('.txt') ? 0o644 : 0o755);
 }
 fs.copyFileSync(path.join(root, 'README.md'), path.join(bundle, 'README.md'));
+fs.copyFileSync(path.join(root, 'assets/icon/reddog.icns'), path.join(bundle, 'reddog.icns'));
 
 // ---- refuse to ship anything that should not be there
 const files = [];

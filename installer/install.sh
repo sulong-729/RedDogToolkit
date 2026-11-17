@@ -121,6 +121,7 @@ chmod 755 "$BIN_DIR/reddog-mcp"
 
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 : > "$APP/Contents/Resources/.reddog"
+[ -f "$HERE/reddog.icns" ] && cp "$HERE/reddog.icns" "$APP/Contents/Resources/reddog.icns"
 cat > "$APP/Contents/Info.plist" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -132,6 +133,7 @@ cat > "$APP/Contents/Info.plist" <<EOF
   <key>CFBundleVersion</key><string>$VERSION</string>
   <key>CFBundleShortVersionString</key><string>$VERSION</string>
   <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleIconFile</key><string>reddog</string>
   <key>LSUIElement</key><true/>
 </dict></plist>
 EOF
